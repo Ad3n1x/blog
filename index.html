@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>All Blog Posts</title>
+  <title>Stories & Insights</title>
 
   <style>
     body {
@@ -90,11 +90,9 @@ header {
 
 button {
   display: block;
-  margin: 30px auto;
   padding: 12px 20px;
   font-size: 20px;
-  width: 35%;
-  background: linear-gradient(135deg, #007bff, #0056b3);
+  background: linear-gradient(135deg, #ffae00, #b34200);
   color: white;
   border: none;
   border-radius: 6px;
@@ -124,13 +122,9 @@ a {
 </head>
 
 <body>
-  <header>All Blog Posts</header>
+  <header style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">Stories & Insights   <a href="./auth.html"><button>Click To Add Your Insights</button></a></header>
 
   <div id="display"></div>
-  <a href="./auth.html"><button>Click To Add Blog</button></a>
-  <div class="d-flex justify-content-start p-4">
-    <button class="btn btn-danger text-light" id="signOut">Logout</button>
-  </div>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
@@ -192,8 +186,6 @@ a {
 
                     <div class="meta">
                       <strong>Author:</strong> ${blog.author} <br>
-                      <strong>Likes:</strong> ${blog.likes} <br>
-                      <strong>Status:</strong> ${blog.published ? "Published" : "Not published"}
                     </div>
                 </div>
             </div>
