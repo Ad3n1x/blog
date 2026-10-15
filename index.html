@@ -1,216 +1,35 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stories & Insights</title>
-  <script>
-    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-  </script>
-  <script defer src="/_vercel/insights/script.js"></script>
-
-  <style>
-    body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: #eef1f5;
-  margin: 0;
-  padding: 0;
-  color: #333;
-}
-
-header {
-  background: linear-gradient(135deg, #007bff, #0056b3);
-  padding: 25px;
-  text-align: center;
-  color: white;
-  font-size: 32px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-}
-
-#display {
-  max-width: 1200px;
-  margin: 50px auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 30px;
-  padding: 0 25px;
-}
-
-.card {
-  background: white;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
-}
-
-.card img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-}
-
-.card-content {
-  padding: 22px;
-}
-
-.card-content h1 {
-  font-size: 24px;
-  margin-bottom: 12px;
-  color: #222;
-  font-weight: 600;
-}
-
-.card-content h1 a {
-  text-decoration: none;
-  color: #007bff;
-  transition: color 0.2s ease;
-}
-
-.card-content h1 a:hover {
-  color: #004a99;
-}
-
-.card-content p {
-  font-size: 15px;
-  color: #555;
-  line-height: 1.7;
-  margin-bottom: 18px;
-}
-
-.meta {
-  font-size: 14px;
-  color: #666;
-  line-height: 1.6;
-}
-
-button {
-  display: block;
-  padding: 12px 20px;
-  font-size: 20px;
-  background: linear-gradient(135deg, #ffae00, #b34200);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: 0.25s ease;
-}
-
-button:hover {
-  background: linear-gradient(135deg, #0056b3, #003f82);
-  transform: translateY(-3px);
-}
-
-#signOut {
-  width: 180px;
-  background: #dc3545;
-  font-size: 18px;
-}
-
-#signOut:hover {
-  background: #b52a36;
-}
-a {
-  text-decoration: none;
-  color: white;
-}
-  </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#10110f"><meta name="description" content="Stories, perspectives and ideas worth sharing.">
+<title>FIELDNOTES — Stories & Insights</title>
+<style>
+:root{color-scheme:dark;--bg:#10110f;--panel:#191a17;--panel2:#20211d;--text:#f4f2e9;--muted:#a4a69a;--line:#34362e;--accent:#c8f169;--serif:Georgia,'Times New Roman',serif;--sans:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6}a{color:inherit;text-decoration:none}button,input{font:inherit}.wrap{width:min(1180px,calc(100% - 40px));margin:auto}.topline{border-bottom:1px solid var(--line);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}.topline .wrap{display:flex;justify-content:space-between;padding:12px 0}.nav{display:flex;align-items:center;justify-content:space-between;padding:23px 0}.brand{display:flex;align-items:center;gap:11px;font-weight:850;letter-spacing:-.04em;font-size:21px}.mark{width:30px;height:30px;border-radius:9px;background:var(--accent);color:#14150f;display:grid;place-items:center;font-size:17px;font-weight:900}.navlinks{display:flex;align-items:center;gap:22px;font-size:13px;color:var(--muted)}.navlinks a:hover{color:var(--text)}.pill{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:999px;padding:10px 17px;font-size:12px;font-weight:750;transition:.2s}.pill:hover{border-color:var(--accent);color:var(--accent)}.pill.primary{background:var(--accent);border-color:var(--accent);color:#17190f}.pill.primary:hover{background:#d8ff8d}.hero{padding:66px 0 55px;display:grid;grid-template-columns:1.3fr .7fr;gap:55px;align-items:end;border-bottom:1px solid var(--line)}.eyebrow{display:flex;align-items:center;gap:10px;color:var(--accent);font-size:11px;font-weight:800;letter-spacing:.17em;text-transform:uppercase}.eyebrow:before{content:"";height:1px;width:25px;background:var(--accent)}h1{font-family:var(--serif);font-weight:400;letter-spacing:-.055em;font-size:clamp(52px,8vw,100px);line-height:.98;margin:22px 0 25px;max-width:780px}h1 em{color:var(--accent);font-weight:400}.hero-copy{color:var(--muted);font-size:15px;max-width:350px;margin:0 0 24px}.hero-note{border-left:1px solid var(--accent);padding:6px 0 6px 22px;color:var(--muted);font-size:13px;max-width:290px}.hero-note strong{display:block;color:var(--text);font-size:16px;margin-bottom:7px}.toolbar{padding:28px 0 18px;display:flex;justify-content:space-between;align-items:center;gap:20px}.section-title{font-size:12px;text-transform:uppercase;letter-spacing:.15em;font-weight:800}.search{width:min(320px,100%);display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:999px;padding:10px 15px;background:var(--panel)}.search span{color:var(--muted)}.search input{border:0;outline:0;background:transparent;color:var(--text);width:100%;font-size:13px}.search input::placeholder{color:#77796f}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;padding-bottom:80px}.card{min-width:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--panel);transition:transform .25s,border-color .25s;display:flex;flex-direction:column}.card:hover{transform:translateY(-5px);border-color:#747d52}.cover{height:205px;position:relative;overflow:hidden;background:linear-gradient(135deg,#2c3526,#687b4b 55%,#d2dbb2)}.cover img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}.card:hover .cover img{transform:scale(1.04)}.cover:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.35))}.cover-index{position:absolute;z-index:1;left:16px;top:15px;font-size:11px;font-weight:800;letter-spacing:.12em;color:white;background:#10110fa8;padding:5px 9px;border-radius:999px}.card-body{padding:22px;display:flex;flex-direction:column;flex:1}.meta{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em}.card h2{font-family:var(--serif);font-weight:400;font-size:27px;line-height:1.15;letter-spacing:-.03em;margin:17px 0 12px}.card h2 a:hover{color:var(--accent)}.excerpt{color:var(--muted);font-size:13px;line-height:1.75;margin:0 0 22px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}.card-bottom{margin-top:auto;padding-top:16px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;font-size:12px}.author{color:var(--muted)}.read{color:var(--accent);font-weight:800}.state{grid-column:1/-1;padding:55px 20px;border:1px dashed var(--line);border-radius:15px;text-align:center;color:var(--muted)}.state strong{display:block;color:var(--text);font-family:var(--serif);font-size:26px;font-weight:400;margin-bottom:6px}.footer{border-top:1px solid var(--line);padding:25px 0 35px;color:var(--muted);font-size:12px}.footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}.footer b{color:var(--text)}.mobile-add{display:none}
+@media(max-width:900px){.hero{grid-template-columns:1fr .6fr;gap:25px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.cover{height:190px}}
+@media(max-width:600px){.wrap{width:min(100% - 28px,1180px)}.topline .wrap span:last-child{display:none}.nav{padding:17px 0}.navlinks{gap:10px}.navlinks>a:first-child{display:none}.navlinks .pill{padding:8px 12px}.hero{grid-template-columns:1fr;padding:47px 0 35px;gap:15px}.hero h1{font-size:clamp(52px,15vw,78px)}.hero-note{max-width:none}.toolbar{align-items:flex-start;flex-direction:column}.search{width:100%}.grid{grid-template-columns:1fr;gap:14px;padding-bottom:55px}.cover{height:220px}.card-body{padding:20px}.card h2{font-size:29px}.mobile-add{display:inline-flex}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+</style>
 </head>
-
 <body>
-  <header style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap:10px">Stories & Insights   <a href="./auth.html"><button>Click To Add Your Insights</button></a></header>
-
-  <div id="display"></div>
-
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-analytics.js";
-    import {
-      getFirestore,
-      collection,
-      getDocs,
-    } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
-    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-auth.js";
-    const firebaseConfig = {
-      apiKey: "AIzaSyDwr9_5onPlyZTBBcZa_JPdh0wBxauvB9Y",
-      authDomain: "marchcohort26.firebaseapp.com",
-      projectId: "marchcohort26",
-      storageBucket: "marchcohort26.appspot.com",
-      messagingSenderId: "607896390362",
-      appId: "1:607896390362:web:b1dd3b7f55fb84d86af3e3",
-      measurementId: "G-5HDDLBXGBT",
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-    
-    const auth = getAuth();
-    const db = getFirestore(app);
-    const colRef = collection(db, "blogfulldescription");
-
-    const blog = [];
-
-    async function getAllBlogs() {
-      try {
-        const finddocs = await getDocs(colRef);
-
-        finddocs.docs
-          .sort((a, b) => a.id.localeCompare(b.id))
-          .forEach((doc) => {
-            blog.push({ id: doc.id, ...doc.data() });
-          });
-
-        displayAllBlogs();
-      } catch (error) {
-        console.log("Error fetching blogs:", error);
-      }
-    }
-
-    getAllBlogs();
-
-    function displayAllBlogs() {
-      let display = document.getElementById("display");
-
-      blog.forEach((blog, index) => {
-        display.innerHTML += `
-            <div class="card">
-                <img src="${blog.image}" alt="">
-                <div class="card-content">
-                    <h1><a href="full.html?index=${index}">${blog.title}</a></h1>
-                  <p>${blog.content.slice(0, 400) + "..."}</p>
-
-
-                    <div class="meta">
-                      <strong>Author:</strong> ${blog.author} <br>
-                    </div>
-                </div>
-            </div>
-          `;
-      });
-    }
-    const logOut = document.getElementById("signOut");
-
-    logOut.addEventListener("click", async () => {
-      try {
-        await signOut(auth);
-
-        alert(`logout successfull`)
-        window.location.href = './index.html'
-
-      } catch (error) {
-        console.log(error.message);
-
-      }
-    })
-  </script>
-</body>
-
-</html>
+<div class="topline"><div class="wrap"><span>Independent ideas · Open perspectives</span><span id="todayLabel">A quiet corner of the internet</span></div></div>
+<header class="wrap nav"><a class="brand" href="./index.html"><span class="mark">f.</span><span>FIELDNOTES<span style="color:var(--accent)">.</span></span></a><nav class="navlinks"><a href="#stories">Explore</a><a href="#about">About</a><a class="pill" href="./create.html">Sign in</a><a class="pill primary" href="./auth.html">Write with us ↗</a></nav></header>
+<main>
+<section class="wrap hero"><div><div class="eyebrow">Stories & insights</div><h1>Ideas worth<br><em>staying for.</em></h1><p class="hero-copy">A home for fresh perspectives, useful discoveries, and the stories that make us see things differently.</p><a class="pill primary" href="#stories">Explore the latest ↓</a></div><aside class="hero-note"><strong>Read a little deeper.</strong>Less noise. More substance. Find a thought that sticks with you long after you close the tab.</aside></section>
+<section class="wrap" id="stories"><div class="toolbar"><div class="section-title">The reading room <span id="storyCount" style="color:var(--muted);font-weight:500">· Loading stories</span></div><label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Search stories or authors…" aria-label="Search stories or authors"></label></div><div class="grid" id="display"><div class="state"><strong>Gathering the stories…</strong>Just a moment while the reading room opens.</div></div></section>
+</main>
+<footer class="footer" id="about"><div class="wrap"><span><b>FIELDNOTES.</b> A place for ideas worth sharing.</span><span>Made for curious minds · © <span id="year"></span> AD3N1X</span></div></footer>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
+const firebaseConfig={apiKey:"AIzaSyDwr9_5onPlyZTBBcZa_JPdh0wBxauvB9Y",authDomain:"marchcohort26.firebaseapp.com",projectId:"marchcohort26",storageBucket:"marchcohort26.appspot.com",messagingSenderId:"607896390362",appId:"1:607896390362:web:b1dd3b7f55fb84d86af3e3",measurementId:"G-5HDDLBXGBT"};
+const db=getFirestore(initializeApp(firebaseConfig));const display=document.getElementById("display");const searchInput=document.getElementById("searchInput");let blogs=[];
+document.getElementById("year").textContent=new Date().getFullYear();
+document.getElementById("todayLabel").textContent=new Intl.DateTimeFormat("en",{month:"long",year:"numeric"}).format(new Date());
+const esc=value=>String(value??"").replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
+function render(){const term=searchInput.value.trim().toLowerCase();const filtered=blogs.filter(b=>[b.title,b.content,b.author].some(v=>String(v??"").toLowerCase().includes(term)));document.getElementById("storyCount").textContent="· "+filtered.length+" "+(filtered.length===1?"story":"stories");if(!filtered.length){display.innerHTML='<div class="state"><strong>No stories found.</strong>Try a different search, or come back for a fresh perspective.</div>';return}display.innerHTML=filtered.map((b,i)=>{const originalIndex=blogs.indexOf(b);const image=String(b.image||"").trim();const cover=image?'<img loading="lazy" src="'+esc(image)+'" alt="" onerror="this.remove()">':'';const excerpt=String(b.content||"").trim().slice(0,210);return '<article class="card"><div class="cover">'+cover+'<span class="cover-index">FIELDNOTE / '+String(i+1).padStart(2,"0")+'</span></div><div class="card-body"><div class="meta"><span>Essay · Insight</span><span>Read story ↗</span></div><h2><a href="./full.html?index='+originalIndex+'">'+esc(b.title||"Untitled story")+'</a></h2><p class="excerpt">'+esc(excerpt)+(String(b.content||"").length>210?"…":"")+'</p><div class="card-bottom"><span class="author">By '+esc(b.author||"Guest writer")+'</span><a class="read" href="./full.html?index='+originalIndex+'">Read more ↗</a></div></div></article>'}).join("")}
+searchInput.addEventListener("input",render);
+try{const snapshot=await getDocs(collection(db,"blogfulldescription"));blogs=snapshot.docs.sort((a,b)=>a.id.localeCompare(b.id)).map(d=>({id:d.id,...d.data()}));render();if(!blogs.length)display.innerHTML='<div class="state"><strong>The first page is yours.</strong>No stories have been published here yet.</div>'}catch(error){console.error("Could not load stories:",error);display.innerHTML='<div class="state"><strong>Stories are taking a break.</strong>We couldn’t connect to the story library. Please refresh in a moment.</div>';document.getElementById("storyCount").textContent="· temporarily unavailable"}
+</script>
+</body></html>
