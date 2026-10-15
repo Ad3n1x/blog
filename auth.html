@@ -4,7 +4,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Auth</title>
+  <title>Create account · FIELDNOTES</title>
+  <meta name="description" content="Create your FIELDNOTES account." />
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   </script>
@@ -50,25 +51,27 @@
 
   <form class="auth-card" id="signUpForm">
     <h1>Create Account</h1>
+    <p class="text-secondary text-center">Join FIELDNOTES to publish and manage your writing.</p>
+    <div id="formMessage" class="alert d-none" role="status" aria-live="polite"></div>
 
     <div class="mb-3">
-      <label class="form-label">Full Name</label>
-      <input type="text" class="form-control" name="fullname" required />
+      <label class="form-label" for="fullname">Full Name</label>
+      <input type="text" class="form-control" id="fullname" name="fullname" autocomplete="name" maxlength="100" required />
     </div>
 
     <div class="mb-3">
-      <label class="form-label">Email address</label>
-      <input type="email" class="form-control" name="email" required />
+      <label class="form-label" for="email">Email address</label>
+      <input type="email" class="form-control" id="email" name="email" autocomplete="email" maxlength="254" required />
     </div>
 
     <div class="mb-3">
-      <label class="form-label">Address</label>
-      <input type="text" class="form-control" name="address" required />
+      <label class="form-label" for="address">Address (optional)</label>
+      <input type="text" class="form-control" id="address" name="address" autocomplete="street-address" maxlength="200" />
     </div>
 
     <div class="mb-3">
-      <label class="form-label">Password</label>
-      <input type="password" class="form-control" name="password" required />
+      <label class="form-label" for="password">Password</label>
+      <input type="password" class="form-control" id="password" name="password" autocomplete="new-password" minlength="8" required />
     </div>
 
     <button type="submit" class="btn btn-primary w-100 py-2">Sign Up</button>
@@ -83,7 +86,7 @@
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
     import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-auth.js";
-    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
+    import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyDwr9_5onPlyZTBBcZa_JPdh0wBxauvB9Y",
@@ -98,37 +101,59 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth();
     const db = getFirestore();
-    const userColRef = collection(db, "users");
-
     const signUpForm = document.getElementById("signUpForm");
+    const formMessage = document.getElementById("formMessage");
+    const submitButton = signUpForm.querySelector('button[type="submit"]');
+
+    function showMessage(message, type = "danger") {
+      formMessage.textContent = message;
+      formMessage.className = `alert alert-${type}`;
+    }
 
     signUpForm.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      let fullname = signUpForm.fullname.value;
-      let email = signUpForm.email.value;
-      let address = signUpForm.address.value;
-      let password = signUpForm.password.value;
+      const fullname = signUpForm.elements.fullname.value.trim();
+      const email = signUpForm.elements.email.value.trim().toLowerCase();
+      const address = signUpForm.elements.address.value.trim();
+      const password = signUpForm.elements.password.value;
+
+      if (fullname.length < 2) {
+        showMessage("Please enter your full name.");
+        return;
+      }
+
+      submitButton.disabled = true;
+      submitButton.textContent = "Creating account…";
+      formMessage.className = "alert d-none";
 
       try {
-        const usersCredentials = await createUserWithEmailAndPassword(auth, email, password);
+        const credentials = await createUserWithEmailAndPassword(auth, email, password);
 
-        await addDoc(userColRef, {
-          uid: usersCredentials.user.uid,
+        // Firebase Authentication handles passwords. Never store plaintext passwords in Firestore.
+        await setDoc(doc(db, "users", credentials.user.uid), {
+          uid: credentials.user.uid,
           fullname,
           email,
-          address,
-          password
+          ...(address ? { address } : {}),
+          createdAt: serverTimestamp()
         });
 
-        alert(`Signup successful`);
-        window.location.href = './index.html';
-
+        showMessage("Your account was created successfully. Redirecting…", "success");
+        window.location.href = "./index.html";
       } catch (error) {
-        console.log(error.message);
-        if (error.message.includes("auth/email-already-in-use")) {
-          alert(`Email already exists, try another one`);
-        }
+        console.error("Account creation failed:", error);
+        const messages = {
+          "auth/email-already-in-use": "An account already exists for this email. Please sign in instead.",
+          "auth/invalid-email": "Please enter a valid email address.",
+          "auth/weak-password": "Choose a stronger password with at least 8 characters.",
+          "auth/network-request-failed": "Network error. Check your connection and try again.",
+          "permission-denied": "Your profile could not be saved. Please check the Firestore security rules."
+        };
+        showMessage(messages[error.code] || "We couldn't create your account. Please try again.");
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Sign Up";
       }
     });
   </script>
